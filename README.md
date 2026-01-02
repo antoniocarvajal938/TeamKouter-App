@@ -1,35 +1,31 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# TeamKounter
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+TeamKounter is a cross-platform mobile application for Android and iOS built with Kotlin Multiplatform and Jetpack Compose. This repository contains the shared codebase and platform-specific implementations.
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Overview
 
-### Build and Run Android Application
+This project serves as a foundational template for building mobile applications that share UI and logic across Android and iOS. The current implementation features a simple user interface with a single screen that demonstrates:
+- A shared UI built with Jetpack Compose.
+- A button to toggle the visibility of content with an animation.
+- Platform-specific logic to display the operating system's name and version.
+- A basic navigation setup using `navigation-compose` to handle different screens within the app.
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+## Tech Stack & Libraries
 
-### Build and Run iOS Application
+- **Kotlin Multiplatform:** For writing shared business logic across different platforms.
+- **Jetpack Compose Multiplatform:** For creating a shared, declarative UI for both Android and iOS.
+- **Material 3:** The UI components are based on the Material Design 3 guidelines.
+- **Compose Navigation:** For handling navigation between different composable screens.
+- **Lifecycle ViewModel Compose:** For managing UI-related data in a lifecycle-conscious way.
+- **Gradle (with Version Catalog):** For build automation and dependency management.
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+## Project Structure
 
----
+The repository is structured as a standard Kotlin Multiplatform project:
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+- **`/composeApp`**: This is the shared module containing code for both Android and iOS.
+    - `src/commonMain/kotlin`: Contains platform-agnostic code, including shared UI (Jetpack Compose), business logic, and navigation setup.
+    - `src/androidMain/kotlin`: Android-specific implementations, such as the `MainActivity` and platform-specific `getPlatform()` function.
+    - `src/iosMain/kotlin`: iOS-specific implementations, including the `MainViewController` and the iOS `getPlatform()` function.
+
+- **`/iosApp`**: Contains the Xcode project required to build and run the application on iOS devices and simulators. It includes the SwiftUI `ContentView` that hosts the shared Compose UI.
