@@ -3,6 +3,7 @@ package org.kazdeel.teamkounter.ui.auth.register
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,9 +32,7 @@ fun RegisterScreen() {
         ParticlesBackground()
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 24.dp),
+            modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -58,14 +57,11 @@ fun RegisterScreen() {
 
             // CARD
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(20.dp, RoundedCornerShape(24.dp))
+                modifier = Modifier.fillMaxWidth().shadow(20.dp, RoundedCornerShape(24.dp))
                     .background(
                         color = Color(0xFF1E293B).copy(alpha = 0.95f),
                         shape = RoundedCornerShape(24.dp)
-                    )
-                    .padding(20.dp)
+                    ).padding(20.dp)
             ) {
 
                 // NAME
@@ -90,25 +86,17 @@ fun RegisterScreen() {
 
                 // BUTTON
                 Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(52.dp)
-                        .shadow(10.dp, RoundedCornerShape(14.dp))
-                        .background(
+                    modifier = Modifier.fillMaxWidth().height(52.dp)
+                        .shadow(10.dp, RoundedCornerShape(14.dp)).background(
                             brush = Brush.horizontalGradient(
                                 listOf(
-                                    Color(0xFF6366F1),
-                                    Color(0xFF8B5CF6)
+                                    Color(0xFF6366F1), Color(0xFF8B5CF6)
                                 )
-                            ),
-                            shape = RoundedCornerShape(14.dp)
-                        ),
-                    contentAlignment = Alignment.Center
+                            ), shape = RoundedCornerShape(14.dp)
+                        ), contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Crear cuenta",
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
+                        text = "Crear cuenta", color = Color.White, fontWeight = FontWeight.Bold
                     )
                 }
             }
@@ -120,6 +108,59 @@ fun RegisterScreen() {
                 color = Color(0xFF6366F1),
                 fontSize = 12.sp
             )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+// DIVIDER
+            Row(
+                modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                HorizontalDivider(
+                    modifier = Modifier.weight(1f), color = Color.White.copy(alpha = 0.1f)
+                )
+
+                Text(
+                    text = "  o continuar con  ",
+                    color = Color.White.copy(alpha = 0.5f),
+                    fontSize = 12.sp
+                )
+
+                HorizontalDivider(
+                    modifier = Modifier.weight(1f), color = Color.White.copy(alpha = 0.1f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+// GOOGLE BUTTON
+            Box(
+                modifier = Modifier.fillMaxWidth().height(52.dp)
+                    .shadow(6.dp, RoundedCornerShape(14.dp)).background(
+                        color = Color.White, shape = RoundedCornerShape(14.dp)
+                    ), contentAlignment = Alignment.Center
+            ) {
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    Text(
+                        text = "G",
+                        color = Color(0xFF4285F4),
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp
+                    )
+
+                    Spacer(modifier = Modifier.width(10.dp))
+
+                    Text(
+                        text = "Continuar con Google",
+                        color = Color.Black,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
         }
     }
 }

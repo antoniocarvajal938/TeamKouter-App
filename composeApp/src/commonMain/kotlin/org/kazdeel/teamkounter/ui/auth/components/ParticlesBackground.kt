@@ -11,11 +11,7 @@ import androidx.compose.ui.graphics.Color
 import kotlin.random.Random
 
 data class Particle(
-    val xRatio: Float,
-    val yRatio: Float,
-    val radius: Float,
-    val speed: Float,
-    val color: Color
+    val xRatio: Float, val yRatio: Float, val radius: Float, val speed: Float, val color: Color
 )
 
 @Composable
@@ -30,9 +26,7 @@ fun ParticlesBackground() {
                 radius = Random.nextFloat() * 6f + 2f,
                 speed = Random.nextFloat() * 100f + 40f,
                 color = listOf(
-                    Color(0xFF8B5CF6),
-                    Color(0xFF6366F1),
-                    Color(0xFF22D3EE)
+                    Color(0xFF8B5CF6), Color(0xFF6366F1), Color(0xFF22D3EE)
                 ).random()
             )
         }
@@ -41,9 +35,7 @@ fun ParticlesBackground() {
     val infiniteTransition = rememberInfiniteTransition()
 
     val animationProgress by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
+        initialValue = 0f, targetValue = 1f, animationSpec = infiniteRepeatable(
             animation = tween(6000, easing = LinearEasing)
         )
     )
@@ -61,19 +53,14 @@ fun ParticlesBackground() {
             drawCircle(
                 brush = Brush.radialGradient(
                     colors = listOf(
-                        particle.color.copy(alpha = 0.35f),
-                        Color.Transparent
+                        particle.color.copy(alpha = 0.35f), Color.Transparent
                     )
-                ),
-                radius = particle.radius * 4,
-                center = Offset(x, newY)
+                ), radius = particle.radius * 4, center = Offset(x, newY)
             )
 
             // Core
             drawCircle(
-                color = particle.color,
-                radius = particle.radius,
-                center = Offset(x, newY)
+                color = particle.color, radius = particle.radius, center = Offset(x, newY)
             )
         }
     }

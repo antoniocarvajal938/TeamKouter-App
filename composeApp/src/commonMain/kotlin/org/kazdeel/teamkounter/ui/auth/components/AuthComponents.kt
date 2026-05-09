@@ -14,24 +14,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AuthTextField(
-    value: String,
-    onChange: (String) -> Unit,
-    placeholder: String,
-    isPassword: Boolean = false
+    value: String, onChange: (String) -> Unit, placeholder: String, isPassword: Boolean = false
 ) {
     TextField(
         value = value,
         onValueChange = onChange,
         placeholder = {
             Text(
-                placeholder,
-                color = Color.White.copy(alpha = 0.6f)
+                placeholder, color = Color.White.copy(alpha = 0.6f)
             )
         },
-        visualTransformation = if (isPassword)
-            PasswordVisualTransformation()
-        else
-            androidx.compose.ui.text.input.VisualTransformation.None,
+        visualTransformation = if (isPassword) PasswordVisualTransformation()
+        else androidx.compose.ui.text.input.VisualTransformation.None,
         singleLine = true,
         textStyle = TextStyle(color = Color.White),
         colors = TextFieldDefaults.colors(

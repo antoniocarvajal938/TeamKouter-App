@@ -19,13 +19,10 @@ fun AuthScreen() {
     val tabs = listOf("Login", "Register")
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
+        modifier = Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
                     listOf(
-                        Color(0xFF0F172A),
-                        Color(0xFF1E293B)
+                        Color(0xFF0F172A), Color(0xFF1E293B)
                     )
                 )
             )
@@ -44,8 +41,7 @@ fun AuthScreen() {
                     Tab(
                         selected = selectedTab == index,
                         onClick = { selectedTab = index },
-                        text = { Text(title) }
-                    )
+                        text = { Text(title) })
                 }
             }
 
